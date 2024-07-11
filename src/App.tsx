@@ -2,7 +2,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 // Component imports
 import LandingPage from "./pages/landing-page";
-import Homepage from "./pages/homepage";
+import AnalyzerPage from "./pages/analyzer";
 import NotFoundPage from "./pages/not-found";
 import AnalysisResultPage from "./pages/result";
 
@@ -14,8 +14,8 @@ export default function App() {
       element: <LandingPage />,
     },
     {
-      path: "/home",
-      element: <Homepage />,
+      path: "/analyzer",
+      element: <AnalyzerPage />,
     },
     {
       path: "/result",
