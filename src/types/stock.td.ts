@@ -15,6 +15,7 @@ export type Stock = {
   _id: string;
   name: string;
   type: string;
+  health: number;
   fundamental: Fundamental;
   makro: MacroCondition[];
   code: string;
@@ -25,6 +26,7 @@ export const stockBca: Stock[] = [
     _id: "66909ed15cac900aef843a9c",
     name: "Bank Central Asia",
     type: "BANK",
+    health: 7.5,
     fundamental: {
       net_profit: 48000,
       eps: 398.68,
@@ -42,6 +44,7 @@ export const stockBca: Stock[] = [
     _id: "66909ed15cac900aef843a9c",
     name: "Bank Central Asia",
     type: "BANK",
+    health: 7.5,
     fundamental: {
       net_profit: 48000,
       eps: 398.68,
@@ -59,6 +62,7 @@ export const stockBca: Stock[] = [
     _id: "66909ed15cac900aef843a9c",
     name: "Bank Central Asia",
     type: "BANK",
+    health: 7.5,
     fundamental: {
       net_profit: 48000,
       eps: 398.68,
@@ -76,6 +80,7 @@ export const stockBca: Stock[] = [
     _id: "66909ed15cac900aef843a9c",
     name: "Bank Central Asia",
     type: "BANK",
+    health: 7.5,
     fundamental: {
       net_profit: 48000,
       eps: 398.68,

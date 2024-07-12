@@ -15,7 +15,7 @@ import RiskProfileTest from "./components/risk-profile-test";
 import Layout from "./pages/layout";
 import LandingPage from "./pages/landingpage";
 
-function ProtectedRoute({ children }:{children: React.ReactNode}) {
+function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { isAuthenticated, riskProfile } = useAuthStore();
 
   if (!isAuthenticated) {
@@ -51,6 +51,8 @@ export default function App() {
     fetchUser();
   }, [setUser]);
 
+  console.log(isAuthenticated);
+
   const routes = [
     {
       path: "/",
@@ -58,14 +60,12 @@ export default function App() {
       children: [
         {
           path: "/",
-          element: (
-            isAuthenticated ? (
-              <ProtectedRoute>
-                <AnalyzerPage />
-              </ProtectedRoute>
-            ) : (
-              <LandingPage />
-            )
+          element: isAuthenticated ? (
+            <ProtectedRoute>
+              <AnalyzerPage />
+            </ProtectedRoute>
+          ) : (
+            <LandingPage />
           ),
         },
         {
@@ -94,35 +94,29 @@ export default function App() {
         },
         {
           path: "/signup",
-          element: !isAuthenticated ? <SignUpPage /> : <Navigate to="/" />,
+          element: !isAuthenticated && <SignUpPage />,
         },
         {
           path: "/login",
-          element: !isAuthenticated ? <LoginPage /> : <Navigate to="/" />,
+          element: !isAuthenticated && <LoginPage />,
         },
         {
           path: "/analyzer",
-          element: (
-            <ProtectedRoute>
-              <AnalyzerPage />
-            </ProtectedRoute>
-          ),
+          element: <AnalyzerPage />,
         },
       ],
     },
     {
       path: "/risk-profile-test",
-      element: (
-        <RiskProfileTest />
-      ),
+      element: <RiskProfileTest />,
     },
     {
       path: "/result",
-      element: (
-        <ProtectedRoute>
-          <AnalysisResultPage />
-        </ProtectedRoute>
-      ),
+      element: <AnalysisResultPage />,
+    },
+    {
+      path: "/test",
+      element: <WatchlistPage />,
     },
     {
       path: "*",
