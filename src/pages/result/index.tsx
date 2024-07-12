@@ -9,7 +9,7 @@ const AnalysisResultPage = () => {
   };
 
   return (
-    <div className="flex flex-col w-screen gap-10 p-8 items-start justify-start h-screen">
+    <div className="flex flex-col w-full gap-10 p-8 items-start justify-start h-screen">
       <div id="header" className="flex gap-6 items-center text-3xl font-semibold h-[10%]">
         <img src={BackIcon} alt="back" className="w-8 h-8 fill-white cursor-pointer" onClick={goBack} />
         Stocks Analysis

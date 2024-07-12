@@ -1,10 +1,18 @@
+<<<<<<< HEAD
+import { useEffect, useState } from "react";
 import {
+  Navigate,
+=======
+import {
+>>>>>>> b13bd53aaa3d9e3703d5bad24d6d1c67ef302236
   RouterProvider,
   createBrowserRouter,
   // Navigate
 } from "react-router-dom";
-import { useEffect } from "react";
+<<<<<<< HEAD
 import useAuthStore from "./store/authStore";
+=======
+>>>>>>> b13bd53aaa3d9e3703d5bad24d6d1c67ef302236
 
 // Component imports
 import AnalyzerPage from "./pages/analyzer";
@@ -18,112 +26,84 @@ import WatchlistPage from "./pages/registered/watchlist";
 import RiskProfileTest from "./components/risk-profile-test";
 import Layout from "./pages/layout";
 // import LandingPage from "./pages/landingpage";
-import AnalyzerComponent from "./components/analysis";
+// import AnalyzerComponent from "./components/analysis";
 import AdroAnalysisSection from "./components/stocks-analysis/adaro";
 import LandingPage from "./pages/landingpage";
-
-function ProtectedRoute({ children }: { children: React.ReactNode }) {
-  // const { isAuthenticated, riskProfile } = useAuthStore();
-
-  // if (!isAuthenticated) {
-  //   return <Navigate to="/login" />;
-  // }
-
-  // if (isAuthenticated && !riskProfile) {
-  //   return <Navigate to="/risk-profile-test" />;
-  // }
-
-  return children;
-}
+import SubscribePage from "./pages/subscribe";
 
 export default function App() {
-  const { isAuthenticated, setUser } = useAuthStore();
-  console.log("auth", isAuthenticated);
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const response = await fetch(import.meta.env.VITE_API_URL + "/user", {
-          credentials: "include",
-        });
-        if (!response.ok) {
-          throw new Error("Failed to fetch user");
-        }
-        const user = await response.json();
-        if (user) setUser(user);
-      } catch (error) {
-        console.error("Error fetching user:", error);
-      }
-    };
-
-    fetchUser();
-  }, [setUser]);
-
-  console.log("isAuthenticated", isAuthenticated);
   const routes = [
-    {
-      path: "/",
-      element: <Layout isAuthenticated={false} />,
-      children: [
-        {
-          path: "/free",
-          element: <LandingPage />,
-        },
-        {
-          path: "/analyzer",
-          element: <AnalyzerPage />,
-        },
-      ],
-    },
     {
       path: "/",
       element: <Layout isAuthenticated={true} />,
       children: [
         {
           path: "/",
+<<<<<<< HEAD
+          // element: isAuthenticated ? (
+          //   <ProtectedRoute>
+          //   <AnalyzerComponent/>
+          //   </ProtectedRoute>
+          // ) : (
+          //   <LandingPage />
+          // ),
           element: (
             <ProtectedRoute>
-              <AnalyzerComponent />
+              <AnalyzerPage />
             </ProtectedRoute>
           ),
+=======
+          element: <AnalyzerPage />,
+>>>>>>> b13bd53aaa3d9e3703d5bad24d6d1c67ef302236
         },
         {
           path: "/profile",
-          element: (
-            <ProtectedRoute>
-              <ProfilePage />
-            </ProtectedRoute>
-          ),
+          element: <ProfilePage />,
         },
         {
-          path: "/portofolio",
-          element: (
-            <ProtectedRoute>
-              <PortfolioPage />
-            </ProtectedRoute>
-          ),
+          path: "/portfolio",
+          element: <PortfolioPage />,
         },
         {
           path: "/watchlist",
-          element: (
-            <ProtectedRoute>
-              <WatchlistPage />
-            </ProtectedRoute>
-          ),
+          element: <WatchlistPage />,
         },
+      ],
+    },
+    {
+      path: "/free",
+      element: <Layout isAuthenticated={false} />,
+      children: [
         {
+<<<<<<< HEAD
           path: "/signup",
-          element: !isAuthenticated && <SignUpPage />,
+          element: !isAuthenticated ? <SignUpPage /> : <Navigate to="/" />,
         },
         {
           path: "/login",
-          element: !isAuthenticated && <LoginPage />,
+          element: !isAuthenticated ? <LoginPage /> : <Navigate to="/" />,
+=======
+          path: "/free/",
+          element: <LandingPage />,
         },
         {
-          path: "/analyzer",
+          path: "/free/analyzer",
           element: <AnalyzerPage />,
+>>>>>>> b13bd53aaa3d9e3703d5bad24d6d1c67ef302236
+        },
+        {
+          path: "/free/signup",
+          element: <SignUpPage />,
+        },
+        {
+          path: "/free/login",
+          element: <LoginPage />,
         },
       ],
+    },
+    {
+      path: "/subscribe",
+      element: <SubscribePage />
     },
     {
       path: "/risk-profile-test",
@@ -146,6 +126,7 @@ export default function App() {
       element: <NotFoundPage />,
     },
   ];
+  
 
   const router = createBrowserRouter(routes);
 
