@@ -9,8 +9,9 @@ const LoginPage = () => {
     // You can add any initialization or side effects here if needed
   }, []);
 
+
   return (
-    <div className="flex flex-col w-screen justify-center items-center h-full">
+    <div className="flex flex-row w-screen justify-center items-center h-full">
       <div className="flex flex-col w-fit items-center gap-10">
         <h1 className="text-3xl font-semibold">Welcome back</h1>
         <div className="flex flex-col gap-6 items-center">
