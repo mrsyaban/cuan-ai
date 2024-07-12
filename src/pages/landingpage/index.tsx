@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const LandingPage = () => {
   const navigate = useNavigate();
-
+  console.log("landing");
   return (
     <div className="h-screen bg-black flex w-screen items-center justify-center relative">
       <div className="mx-auto w-fit flex flex-col items-center text-white text-4xl gap-16  z-10">
