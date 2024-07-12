@@ -29,7 +29,7 @@ const WatchlistCard = ({ stockData }: { stockData: Stock }) => {
       <div className="w-full flex cursor-pointer hover:bg-opacity-65 justify-center text-semibold bg-green-700 rounded-md" onClick={() => window.open("https://bibit.id/", "_blank")}>
         BUY
       </div>
-      <div  className="w-full flex cursor-pointer hover:bg-opacity-65 justify-center border border-blue-600 bg-blue-600 bg-opacity-40 rounded-md" onClick={()=>navigate("/result")}>
+      <div  className="w-full flex cursor-pointer hover:bg-opacity-65 justify-center border border-blue-600 bg-blue-600 bg-opacity-40 rounded-md" onClick={()=>navigate("/adro")}>
         View Analysis
       </div>
     </div>

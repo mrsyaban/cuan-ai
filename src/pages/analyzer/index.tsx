@@ -31,6 +31,7 @@ const AnalyzerPage: React.FC = () => {
       } catch (error) {
         console.error("Error fetching user:", error);
       }
+      navigate("/result");
   }
 
   return (

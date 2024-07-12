@@ -3,8 +3,6 @@ import {
   createBrowserRouter,
   // Navigate
 } from "react-router-dom";
-import { useEffect } from "react";
-import useAuthStore from "./store/authStore";
 
 // Component imports
 import AnalyzerPage from "./pages/analyzer";
@@ -18,116 +16,59 @@ import WatchlistPage from "./pages/registered/watchlist";
 import RiskProfileTest from "./components/risk-profile-test";
 import Layout from "./pages/layout";
 // import LandingPage from "./pages/landingpage";
-import AnalyzerComponent from "./components/analysis";
+// import AnalyzerComponent from "./components/analysis";
 import LandingPage from "./pages/landingpage";
 import SubscribePage from "./pages/subscribe";
 
-function ProtectedRoute({ children }: { children: React.ReactNode }) {
-  // const { isAuthenticated, riskProfile } = useAuthStore();
-
-  // if (!isAuthenticated) {
-  //   return <Navigate to="/login" />;
-  // }
-
-  // if (isAuthenticated && !riskProfile) {
-  //   return <Navigate to="/risk-profile-test" />;
-  // }
-
-  return children;
-}
-
 export default function App() {
-  const { isAuthenticated, setUser } = useAuthStore();
-  console.log("auth", isAuthenticated);
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const response = await fetch(import.meta.env.VITE_API_URL + "/user", {
-          credentials: "include",
-        });
-        if (!response.ok) {
-          throw new Error("Failed to fetch user");
-        }
-        const user = await response.json();
-        if (user) setUser(user);
-      } catch (error) {
-        console.error("Error fetching user:", error);
-      }
-    };
-    
-    fetchUser();
-  }, [setUser]);
-  
-  console.log("isAuthenticated", isAuthenticated);
   const routes = [
-    {
-      path: "/",
-      element: <Layout isAuthenticated={false} />,
-      children: [
-        {
-          path: "free",
-          element: <LandingPage />,
-        },
-        {
-          path: "analyzer",
-          element: <AnalyzerPage />,
-        },
-        {
-          path: "signup",
-          element: <SignUpPage />,
-        },
-        {
-          path: "login",
-          element: <LoginPage />,
-        },
-      ],
-    },
     {
       path: "/",
       element: <Layout isAuthenticated={true} />,
       children: [
         {
           path: "/",
-          element: (
-            <ProtectedRoute>
-              <AnalyzerComponent />
-            </ProtectedRoute>
-          ),
+          element: <AnalyzerPage />,
         },
         {
           path: "/profile",
-          element: (
-            <ProtectedRoute>
-              <ProfilePage />
-            </ProtectedRoute>
-          ),
+          element: <ProfilePage />,
         },
         {
-          path: "/portofolio",
-          element: (
-            <ProtectedRoute>
-              <PortfolioPage />
-            </ProtectedRoute>
-          ),
+          path: "/portfolio",
+          element: <PortfolioPage />,
         },
         {
           path: "/watchlist",
-          element: (
-            <ProtectedRoute>
-              <WatchlistPage />
-            </ProtectedRoute>
-          ),
+          element: <WatchlistPage />,
+        },
+      ],
+    },
+    {
+      path: "/free",
+      element: <Layout isAuthenticated={false} />,
+      children: [
+        {
+          path: "/free",
+          element: <LandingPage />,
         },
         {
-          path: "/analyzer",
+          path: "/free/analyzer",
           element: <AnalyzerPage />,
+        },
+        {
+          path: "/free/signup",
+          element: <SignUpPage />,
+        },
+        {
+          path: "/free/login",
+          element: <LoginPage />,
         },
       ],
     },
     {
       path: "/subscribe",
-      element: <SubscribePage/>
+      element: <SubscribePage />
     },
     {
       path: "/risk-profile-test",
@@ -146,6 +87,7 @@ export default function App() {
       element: <NotFoundPage />,
     },
   ];
+  
 
   const router = createBrowserRouter(routes);
 
