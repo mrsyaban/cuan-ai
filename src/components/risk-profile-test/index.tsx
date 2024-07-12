@@ -1,8 +1,10 @@
 import { useState, ChangeEvent } from "react";
 import axios from "axios";
 import useAuthStore from "../../store/authStore";
+import { useNavigate } from "react-router-dom";
 
 const RiskProfileTest = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     birthDate: "",
     marriageStatus: "",
@@ -42,16 +44,21 @@ const RiskProfileTest = () => {
     return !Object.values(newErrors).includes(true);
   };
 
-  const {user} = useAuthStore();
+  const {user, setRiskProfile} = useAuthStore();
 
   const onSubmit = async () => {
     if (validate()) {
       try {
-        const res = await axios.post(`${import.meta.env.VITE_API_URL}/risk-profile-test`, {
+        const res = await axios.post(`${import.meta.env.VITE_API_URL || ""}/risk-profile-test`, {
           ...formData,
           userId: user?.googleId,
         });
         console.log(res.data);
+        if(res) {
+          // Syaban ngawur
+          setRiskProfile("moderate");
+          navigate("/");
+        }
       } catch (error) {
         console.error(error);
       }

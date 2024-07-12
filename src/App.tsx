@@ -31,6 +31,7 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   const { isAuthenticated, setUser } = useAuthStore();
+  console.log("auth",isAuthenticated);
 
   useEffect(() => {
     const fetchUser = async () => {
