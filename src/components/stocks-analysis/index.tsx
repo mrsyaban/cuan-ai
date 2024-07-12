@@ -1,11 +1,10 @@
 import { stocksAnalysis, StocksAnalysis } from "../../types/stocks.td";
 import { useEffect, useState } from "react";
-import ActionChip from "../action-chips";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 // import StocksChart from "../chart";
 import { BarChart, Card, DonutChart, LineChart } from "@tremor/react";
-import { HiOutlineBookmark, HiOutlineShoppingCart } from "react-icons/hi";
+import { HiOutlineBookmark, HiOutlineShoppingBag } from "react-icons/hi";
 
 
 const StocksAnalysisSection = () => {
@@ -117,7 +116,7 @@ const StocksAnalysisSection = () => {
             </button>
             <span className="block w-3"></span>
             <button>
-              <HiOutlineShoppingCart />
+              <HiOutlineShoppingBag />
             </button>
           </div>
           {/* <ActionChip action={analysis.action} /> */}
