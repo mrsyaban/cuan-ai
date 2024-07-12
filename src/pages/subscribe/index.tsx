@@ -33,7 +33,7 @@ const SubscribePage: React.FC = () => {
           <Link to="/subscribe" className="cursor-pointer border-2 hover:bg-opacity-40 hover:text-white border-pink-400 bg-pink-300 bg-opacity-25 w-fit self-center h-fit py-1 px-8 rounded-full text-white text-lg">
             Subscribe
           </Link>
-          <div onClick={() => navigate("/login")} className="cursor-pointer border-2 hover:bg-gray-800 border-blue-400 bg-blue-300 bg-opacity-25 w-fit self-center py-1 px-8 rounded-full text-white text-xl">
+          <div onClick={() => navigate("/free/login")} className="cursor-pointer border-2 hover:bg-gray-800 border-blue-400 bg-blue-300 bg-opacity-25 w-fit self-center py-1 px-8 rounded-full text-white text-xl">
             Try Free!
           </div>
         </div>

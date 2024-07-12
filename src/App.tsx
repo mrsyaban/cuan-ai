@@ -49,7 +49,7 @@ export default function App() {
       element: <Layout isAuthenticated={false} />,
       children: [
         {
-          path: "/free",
+          path: "/free/",
           element: <LandingPage />,
         },
         {

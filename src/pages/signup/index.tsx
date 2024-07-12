@@ -10,7 +10,7 @@ const SignUpPage = () => {
           <div className="flex items-center w-80 justify-center bg-blue-500 rounded-md px-5 py-3">Continue</div>
           <div className="flex flex-row gap-2">
             Already have an account?{" "}
-            <a href="/login" className="text-blue-500">
+            <a href="/free/login" className="text-blue-500">
               Login
             </a>
           </div>
