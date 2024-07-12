@@ -1,4 +1,4 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider, createBrowserRouter, Navigate } from "react-router-dom";
 import { useEffect } from "react";
 import useAuthStore from "./store/authStore";
 
@@ -15,8 +15,21 @@ import RiskProfileTest from "./components/risk-profile-test";
 import Layout from "./pages/layout";
 import LandingPage from "./pages/landingpage";
 
+function ProtectedRoute({ children }:{children: React.ReactNode}) {
+  const { isAuthenticated, riskProfile } = useAuthStore();
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" />;
+  }
+
+  if (isAuthenticated && !riskProfile) {
+    return <Navigate to="/risk-profile-test" />;
+  }
+
+  return children;
+}
+
 export default function App() {
-  // TODO Tambah handle authorization
   const { isAuthenticated, setUser } = useAuthStore();
 
   useEffect(() => {
@@ -43,24 +56,78 @@ export default function App() {
       path: "/",
       element: <Layout isAuthenticated={isAuthenticated} />,
       children: [
-        ...(isAuthenticated
-          ? [
-              { path: "/", element: <AnalyzerPage /> },
-              { path: "/profile", element: <ProfilePage /> },
-              { path: "/portofolio", element: <PortfolioPage /> },
-              { path: "/watchlist", element: <WatchlistPage /> },
-            ]
-          : [
-              { path: "/", element: <LandingPage /> },
-              { path: "/signup", element: <SignUpPage /> },
-              { path: "/login", element: <LoginPage /> },
-            ]),
-        { path: "/analyzer", element: <AnalyzerPage /> },
+        {
+          path: "/",
+          element: (
+            isAuthenticated ? (
+              <ProtectedRoute>
+                <AnalyzerPage />
+              </ProtectedRoute>
+            ) : (
+              <LandingPage />
+            )
+          ),
+        },
+        {
+          path: "/profile",
+          element: (
+            <ProtectedRoute>
+              <ProfilePage />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "/portofolio",
+          element: (
+            <ProtectedRoute>
+              <PortfolioPage />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "/watchlist",
+          element: (
+            <ProtectedRoute>
+              <WatchlistPage />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "/signup",
+          element: !isAuthenticated ? <SignUpPage /> : <Navigate to="/" />,
+        },
+        {
+          path: "/login",
+          element: !isAuthenticated ? <LoginPage /> : <Navigate to="/" />,
+        },
+        {
+          path: "/analyzer",
+          element: (
+            <ProtectedRoute>
+              <AnalyzerPage />
+            </ProtectedRoute>
+          ),
+        },
       ],
     },
-    { path: "/risk-profile-test", element: <RiskProfileTest /> },
-    { path: "/result", element: <AnalysisResultPage /> },
-    { path: "*", element: <NotFoundPage /> },
+    {
+      path: "/risk-profile-test",
+      element: (
+        <RiskProfileTest />
+      ),
+    },
+    {
+      path: "/result",
+      element: (
+        <ProtectedRoute>
+          <AnalysisResultPage />
+        </ProtectedRoute>
+      ),
+    },
+    {
+      path: "*",
+      element: <NotFoundPage />,
+    },
   ];
 
   const router = createBrowserRouter(routes);

@@ -10,6 +10,7 @@ interface User {
 interface AuthState {
   user: User | null;
   isAuthenticated: boolean;
+  riskProfile: string;
   setUser: (user: User | null) => void;
   logout: () => void;
 }
