@@ -1,23 +1,24 @@
-import { stocksAnalysis, StocksAnalysis } from "../../types/stocks.td";
+import { adaroAnalysis, StocksAnalysis } from "../../types/stocks.td";
 import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 // import StocksChart from "../chart";
 import { BarChart, Card, DonutChart, LineChart } from "@tremor/react";
 import { HiOutlineBookmark, HiOutlineShoppingBag } from "react-icons/hi";
+import { Action } from "../../enums/action";
 
 
-const StocksAnalysisSection = () => {
-  const [analysis, setAnalysis] = useState<StocksAnalysis>(stocksAnalysis);
+const AdroAnalysisSection = () => {
+  const [analysis, setAnalysis] = useState<StocksAnalysis>(adaroAnalysis);
 
   useEffect(() => {
-    setAnalysis(stocksAnalysis);
+    setAnalysis(adaroAnalysis);
   }, []);
 
   const data = [
     {
       date: '2018',
-      'This Year': 68560
+      'This Year': 40581
     },
     {
       date: '2019',
@@ -25,33 +26,33 @@ const StocksAnalysisSection = () => {
     },
     {
       date: '2020',
-      'This Year': 80233
+      'This Year': 49921
     },
     {
       date: '2021',
-      'This Year': 55123
+      'This Year': 30958
     },
     {
       date: '2022',
-      'This Year': 56000
+      'This Year': 80005
     },
     {
       date: '2023',
-      'This Year': 100000
+      'This Year': 105400
     },
   ];
 
   const dataDonut = [
     {
       name: 'Debt',
-      amount: 60,
-      share: '60%',
+      amount: 40,
+      share: '40%',
       color: 'bg-red-500',
     },
     {
       name: 'Equity',
-      amount: 40,
-      share: '40%',
+      amount: 60,
+      share: '60%',
       color: 'bg-blue-500',
     }
   ]
@@ -83,19 +84,19 @@ const StocksAnalysisSection = () => {
     },
     {
       date: 'Apr 23',
-      Organic: 101,
+      Organic: 360,
     },
     {
       date: 'May 23',
-      Organic: 318,
+      Organic: 435,
     },
     {
       date: 'Jun 23',
-      Organic: 205,
+      Organic: 436,
     },
     {
       date: 'Jul 23',
-      Organic: 372,
+      Organic: 432,
     }
   ]  
   
@@ -109,7 +110,15 @@ const StocksAnalysisSection = () => {
             {analysis.name}
           </div>
           <div className="flex items-center">
-            <span className="text-lime-500 font-bold">RECOMMENDED</span>
+            {
+              adaroAnalysis.action == Action.buy ? 
+                <span className="text-lime-500 font-bold">RECOMMENDED</span>
+                : adaroAnalysis.action == Action.hold ? 
+                  <span className="text-yellow-500 font-bold">HOLD</span>
+                  :
+                  <span className="text-red-500 font-bold">SELL</span>
+                  
+            }
             <span className="block w-3"></span>
             <button>
               <HiOutlineBookmark />
@@ -177,7 +186,7 @@ const StocksAnalysisSection = () => {
           </Card>
           <Card className="w-[460px] h-[300px]">
             <h3 className="ml-0 mr-1 font-semibold text-tremor-content-strong dark:text-dark-tremor-content-strong">
-              Inflation Raycast
+              Coal Price Raycast
             </h3>
             <LineChart
                 data={dataLine}
@@ -197,4 +206,4 @@ const StocksAnalysisSection = () => {
   );
 };
 
-export default StocksAnalysisSection;
+export default AdroAnalysisSection;

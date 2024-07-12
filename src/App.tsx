@@ -17,6 +17,7 @@ import RiskProfileTest from "./components/risk-profile-test";
 import Layout from "./pages/layout";
 import LandingPage from "./pages/landingpage";
 import AnalyzerComponent from "./components/analysis";
+import AdroAnalysisSection from "./components/stocks-analysis/adaro";
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { isAuthenticated, riskProfile } = useAuthStore();
@@ -116,6 +117,10 @@ export default function App() {
     {
       path: "/result",
       element: <AnalysisResultPage />,
+    },
+    {
+      path: "/adro",
+      element: <AdroAnalysisSection/>
     },
     {
       path: "/test",
