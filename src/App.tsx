@@ -1,4 +1,6 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { useEffect } from "react";
+import useAuthStore from "./store/authStore";
 
 // Component imports
 import AnalyzerPage from "./pages/analyzer";
@@ -13,15 +15,35 @@ import RiskProfileTest from "./components/risk-profile-test";
 import Layout from "./pages/layout";
 import LandingPage from "./pages/landingpage";
 
+
 export default function App() {
-  const token = ""; 
+  // TODO Tambah handle authorization
+  const { isAuthenticated, setUser } = useAuthStore();
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await fetch(import.meta.env.VITE_API_URL + "/user", {
+          credentials: "include",
+        });
+        if (!response.ok) {
+          throw new Error("Failed to fetch user");
+        }
+        const user = await response.json();
+        if (user) setUser(user);
+      } catch (error) {
+        console.error("Error fetching user:", error);
+      }
+    };
+
+    fetchUser();
+  }, [setUser]);
 
   const routes = [
     {
       path: "/",
       element: <Layout />,
       children: [
-        ...(token
+        ...(isAuthenticated
           ? [
             { path: "/profile", element: <ProfilePage /> },
             { path: "/portfolio", element: <PortfolioPage /> },

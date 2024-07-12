@@ -1,4 +1,4 @@
-import GoogleIcon from '@/assets/icons/google-icon.svg';
+import GoogleLogin from '../../components/buttons/GoogleLogin';
 
 const SignUpPage = () => {
   return (
@@ -19,10 +19,7 @@ const SignUpPage = () => {
             or
             <hr/>
           </div>
-          <div className="flex flex-row items-center w-80 justify-start border-2 gap-3 rounded-md px-5 py-3">
-            <img src={GoogleIcon} alt="Google Icon" className="w-6 h-6" />
-            Continue With Google
-        </div>
+          <GoogleLogin isLogin={false}/>
         </div>
       </div>
     </div>

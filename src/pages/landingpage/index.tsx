@@ -20,7 +20,6 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
-      {/* <img src={BackgroundAsset} alt="Background" className="absolute  w-full h-full object-cover -b-12" /> */}
     </div>
   );
 };
