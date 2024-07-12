@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import { FileUploader } from "react-drag-drop-files"; // Adjust import based on actual library exports
 import axios from "axios";
 import { HiOutlineCloudUpload } from "react-icons/hi";
 
@@ -16,9 +15,6 @@ const AnalyzerPage: React.FC = () => {
   
   const navigate = useNavigate(); 
 
-  const handleChange = (file: File) => {
-    setFile(file);
-  };
 
   useEffect(() => {
     if (file) {
@@ -54,7 +50,7 @@ const AnalyzerPage: React.FC = () => {
           }} accept="pdf" />
           <label
               htmlFor="dropzone-file"
-              className="flex flex-col items-center justify-center w-full my-2 h-[480px] w-[1080px] border-2 border-gray-300 border-dashed rounded-lg peer-disabled:cursor-not-allowed peer-disabled:bg-slate-100 cursor-pointer hover:bg-gray-800"
+              className="flex flex-col items-center justify-center my-2 h-[480px] w-[1080px] border-2 border-gray-300 border-dashed rounded-lg peer-disabled:cursor-not-allowed peer-disabled:bg-slate-100 cursor-pointer hover:bg-gray-800"
               onDragOver={(e) => e.preventDefault()}
               onDrop={(e) => {
                   e.preventDefault()
