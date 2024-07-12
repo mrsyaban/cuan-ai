@@ -92,11 +92,11 @@ export default function App() {
         },
         {
           path: "/signup",
-          element: !isAuthenticated ? <SignUpPage /> : <Navigate to="/" />,
+          element: !isAuthenticated && <SignUpPage />,
         },
         {
           path: "/login",
-          element: !isAuthenticated ? <LoginPage /> : <Navigate to="/" />,
+          element: !isAuthenticated && <LoginPage />,
         },
         {
           path: "/analyzer",
