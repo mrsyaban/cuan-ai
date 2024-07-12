@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { RouterProvider, createBrowserRouter, 
-  Navigate 
+  // Navigate 
 } from "react-router-dom";
 import useAuthStore from "./store/authStore";
 
@@ -15,20 +15,19 @@ import PortfolioPage from "./pages/registered/portofolio";
 import WatchlistPage from "./pages/registered/watchlist";
 import RiskProfileTest from "./components/risk-profile-test";
 import Layout from "./pages/layout";
-import LandingPage from "./pages/landingpage";
+// import LandingPage from "./pages/landingpage";
 import AnalyzerComponent from "./components/analysis";
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
-  const { isAuthenticated, riskProfile } = useAuthStore();
+  // const { isAuthenticated, riskProfile } = useAuthStore();
 
-  if (!isAuthenticated) {
-    return <Navigate to="/login" />;
-  }
+  // if (!isAuthenticated) {
+  //   return <Navigate to="/login" />;
+  // }
 
-  if (isAuthenticated && !riskProfile) {
-    console.log("Redirecting to risk profile test");
-    return <Navigate to="/risk-profile-test" />;
-  }
+  // if (isAuthenticated && !riskProfile) {
+  //   return <Navigate to="/risk-profile-test" />;
+  // }
 
   return children;
 }
@@ -70,16 +69,21 @@ export default function App() {
   const routes = [
     {
       path: "/",
-      element: <Layout isAuthenticated={isAuthenticated} />,
+      element: <Layout isAuthenticated={true} />,
       children: [
         {
           path: "/",
-          element: isAuthenticated ? (
+          // element: isAuthenticated ? (
+          //   <ProtectedRoute>
+          //   <AnalyzerComponent/>
+          //   </ProtectedRoute>
+          // ) : (
+          //   <LandingPage />
+          // ),
+          element:  (
             <ProtectedRoute>
             <AnalyzerComponent/>
             </ProtectedRoute>
-          ) : (
-            <LandingPage />
           ),
         },
         {
