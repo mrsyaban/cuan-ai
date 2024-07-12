@@ -18,7 +18,7 @@ import LandingPage from "./pages/landingpage";
 export default function App() {
   // TODO Tambah handle authorization
   const { isAuthenticated, setUser } = useAuthStore();
-  console.log(isAuthenticated);
+
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -47,7 +47,7 @@ export default function App() {
           ? [
               { path: "/", element: <AnalyzerPage /> },
               { path: "/profile", element: <ProfilePage /> },
-              { path: "/portfolio", element: <PortfolioPage /> },
+              { path: "/portofolio", element: <PortfolioPage /> },
               { path: "/watchlist", element: <WatchlistPage /> },
             ]
           : [
