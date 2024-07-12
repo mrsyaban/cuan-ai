@@ -49,19 +49,19 @@ export default function App() {
       element: <Layout isAuthenticated={false} />,
       children: [
         {
-          path: "/",
+          path: "/free/",
           element: <LandingPage />,
         },
         {
-          path: "/analyzer",
+          path: "/free/analyzer",
           element: <AnalyzerPage />,
         },
         {
-          path: "/signup",
+          path: "/free/signup",
           element: <SignUpPage />,
         },
         {
-          path: "/login",
+          path: "/free/login",
           element: <LoginPage />,
         },
       ],
