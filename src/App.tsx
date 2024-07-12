@@ -66,6 +66,7 @@ export default function App() {
         },
       ],
     },
+    
     {
       path: "/subscribe",
       element: <SubscribePage />
