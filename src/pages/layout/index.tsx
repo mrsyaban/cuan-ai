@@ -2,11 +2,10 @@ import { Outlet } from "react-router-dom";
 import Header from "../../components/header";
 import UserSidebar from "../../components/user-sidebar";
 
-const Layout = () => {
-  const token = "";
+const Layout = ({isAuthenticated}:{isAuthenticated:boolean}) => {
   return (
-    <div className={`flex ${token ? "flex-row" : "flex-col"} `}>
-      {token ? <UserSidebar /> : <Header />}
+    <div className={`flex ${isAuthenticated ? "flex-row" : "flex-col"} `}>
+      {isAuthenticated ? <UserSidebar /> : <Header />}
       <Outlet />
     </div>
   );

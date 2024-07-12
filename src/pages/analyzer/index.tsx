@@ -30,8 +30,8 @@ const AnalyzerPage: React.FC = () => {
 
       </div>
       <div className="flex flex-col items-center gap-2">
-        <div>
-          Upload financial statement here
+        <div className="text-2xl">
+          Analyze your watchlist company reports
         </div>
         <FileUploader handleChange={handleChange} name="file" types={['pdf']} />
         {/* <div className="flex border-gray-400 text-gray-400 border rounded-2xl p-12">

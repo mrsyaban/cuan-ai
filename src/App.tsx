@@ -15,10 +15,10 @@ import RiskProfileTest from "./components/risk-profile-test";
 import Layout from "./pages/layout";
 import LandingPage from "./pages/landingpage";
 
-
 export default function App() {
   // TODO Tambah handle authorization
   const { isAuthenticated, setUser } = useAuthStore();
+  console.log(isAuthenticated);
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -41,16 +41,17 @@ export default function App() {
   const routes = [
     {
       path: "/",
-      element: <Layout />,
+      element: <Layout isAuthenticated={isAuthenticated} />,
       children: [
         ...(isAuthenticated
           ? [
-            { path: "/profile", element: <ProfilePage /> },
-            { path: "/portfolio", element: <PortfolioPage /> },
-            { path: "/watchlist", element: <WatchlistPage /> },
-          ]
+              { path: "/", element: <AnalyzerPage /> },
+              { path: "/profile", element: <ProfilePage /> },
+              { path: "/portfolio", element: <PortfolioPage /> },
+              { path: "/watchlist", element: <WatchlistPage /> },
+            ]
           : [
-              { index: true, element: <LandingPage /> },
+              { path: "/", element: <LandingPage /> },
               { path: "/signup", element: <SignUpPage /> },
               { path: "/login", element: <LoginPage /> },
             ]),

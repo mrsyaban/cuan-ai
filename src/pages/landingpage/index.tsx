@@ -18,6 +18,9 @@ const LandingPage = () => {
           <div onClick={() => navigate("/analyzer")} className="cursor-pointer border-2 hover:bg-gray-800 border-primary-light w-fit self-center py-4 px-8 rounded-full text-white text-2xl">
             Get Started
           </div>
+          <div onClick={() => navigate("/login")} className="cursor-pointer border-2 hover:bg-gray-800 border-blue-400 bg-blue-300 bg-opacity-25 w-fit self-center py-4 px-8 rounded-full text-white text-2xl">
+            Free trial
+          </div>
         </div>
       </div>
     </div>
