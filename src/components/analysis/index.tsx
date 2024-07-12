@@ -30,20 +30,32 @@ const AnalyzerComponent: React.FC = () => {
   }, [file, navigate]);
 
   return (
-    <div className="h-screen w-full flex flex-col items-center justify-center">
-      <div className="flex flex-col items-center gap-2">
-        <div className="text-2xl">
+    <div className="h-screen w-full flex flex-col items-center py-8 gap-56">
+      <div className="text-4xl font-semibold">
           Analyze your watchlist company reports
+      </div>
+      <div className="h-full">
+        <div className="flex flex-col items-center gap-20">
+          <div className="flex flex-col gap-2 items-center">
+            <div className="text-2xl">
+              Upload financial statement of company
+            </div>
+            <FileUploader handleChange={handleChange} name="file" types={['pdf']} />
+          </div>
+          <div className="flex flex-col gap-2 items-center">
+            <div className="text-2xl">
+              Fill news about the company you want to analyze
+            </div>
+            <textarea
+              className="mt-4 p-2 border border-gray-400 rounded"
+              rows={4}
+              cols={50}
+              value={textInput}
+              onChange={handleTextChange}
+              placeholder="Enter your news text or link here..."
+            />
+          </div>
         </div>
-        <FileUploader handleChange={handleChange} name="file" types={['pdf']} />
-        <textarea
-          className="mt-4 p-2 border border-gray-400 rounded"
-          rows={4}
-          cols={50}
-          value={textInput}
-          onChange={handleTextChange}
-          placeholder="Enter your news text or link here..."
-        />
       </div>
     </div>
   );

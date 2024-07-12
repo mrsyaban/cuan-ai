@@ -20,7 +20,10 @@ const StocksAnalysisSection = () => {
             <img src={analysis.logo} alt="logo" className="w-6 h-6" />
             {analysis.name}
           </div>
+          <div className="flex">
+
           <ActionChip action={analysis.action} />
+          </div>
         </div>
         <div className="flex flex-row rounded-md justify-between bg-primary-dark h-[90%]">
           <pre className="text-wrap overflow-y-auto px-10 py-6">
