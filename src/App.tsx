@@ -1,5 +1,7 @@
-import { RouterProvider, createBrowserRouter, 
-  // Navigate 
+import {
+  RouterProvider,
+  createBrowserRouter,
+  // Navigate
 } from "react-router-dom";
 import { useEffect } from "react";
 import useAuthStore from "./store/authStore";
@@ -17,6 +19,7 @@ import RiskProfileTest from "./components/risk-profile-test";
 import Layout from "./pages/layout";
 // import LandingPage from "./pages/landingpage";
 import AnalyzerComponent from "./components/analysis";
+import LandingPage from "./pages/landingpage";
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   // const { isAuthenticated, riskProfile } = useAuthStore();
@@ -34,7 +37,7 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   const { isAuthenticated, setUser } = useAuthStore();
-  console.log("auth",isAuthenticated);
+  console.log("auth", isAuthenticated);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -55,24 +58,31 @@ export default function App() {
     fetchUser();
   }, [setUser]);
 
-  console.log("isAuthenticated", isAuthenticated)
+  console.log("isAuthenticated", isAuthenticated);
   const routes = [
+    {
+      path: "/",
+      element: <Layout isAuthenticated={false} />,
+      children: [
+        {
+          path: "/free",
+          element: <LandingPage />,
+        },
+        {
+          path: "/analyzer",
+          element: <AnalyzerPage />,
+        },
+      ],
+    },
     {
       path: "/",
       element: <Layout isAuthenticated={true} />,
       children: [
         {
           path: "/",
-          // element: isAuthenticated ? (
-          //   <ProtectedRoute>
-          //   <AnalyzerComponent/>
-          //   </ProtectedRoute>
-          // ) : (
-          //   <LandingPage />
-          // ),
-          element:  (
+          element: (
             <ProtectedRoute>
-            <AnalyzerComponent/>
+              <AnalyzerComponent />
             </ProtectedRoute>
           ),
         },
