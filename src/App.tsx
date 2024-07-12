@@ -17,9 +17,9 @@ import RiskProfileTest from "./components/risk-profile-test";
 import Layout from "./pages/layout";
 // import LandingPage from "./pages/landingpage";
 // import AnalyzerComponent from "./components/analysis";
-import AdroAnalysisSection from "./components/stocks-analysis/adaro";
 import LandingPage from "./pages/landingpage";
 import SubscribePage from "./pages/subscribe";
+import AdroAnalysisSection from "./components/stocks-analysis/adaro";
 
 export default function App() {
   const routes = [
@@ -72,16 +72,16 @@ export default function App() {
       element: <SubscribePage />
     },
     {
+      path:"/adro",
+      element: <AdroAnalysisSection/>
+    },
+    {
       path: "/risk-profile-test",
       element: <RiskProfileTest />,
     },
     {
       path: "/result",
       element: <AnalysisResultPage />,
-    },
-    {
-      path: "/adro",
-      element: <AdroAnalysisSection/>
     },
     {
       path: "/test",

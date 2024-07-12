@@ -41,7 +41,7 @@ const AnalyzerPage: React.FC = () => {
       </div>
       <div className="flex flex-col items-center gap-2">
         <div className="text-2xl">
-          Analyze your watchlist company reports
+          Analyze your company 
         </div>
         <div>
           <input id="dropzone-file" type="file" className="hidden peer" onChange={(e) => {
@@ -66,11 +66,11 @@ const AnalyzerPage: React.FC = () => {
                 :
                 <div className="flex flex-col items-center justify-center pt-5 pb-6">
                     <HiOutlineCloudUpload size={48} />
-                    <p className="text-center">Select your company financial statement</p>
+                    <p className="text-center">Upload your company financial statement</p>
                 </div>
             }
           </label>
-          <textarea className="w-[1080px] h-20 rounded-lg bg-transparent focus:bg-gray-800 focus:border-white"/>
+          <textarea placeholder="Input news article or link to add sentiment analysis" className="w-[1080px] h-20 rounded-lg bg-transparent focus:bg-gray-800 focus:border-white"/>
         </div>
         <button onClick={onSubmit}>
           Submit

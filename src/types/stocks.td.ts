@@ -1,5 +1,4 @@
 import { Action } from "../enums/action"
-import LogoAdaro from '@/assets/mock/logo-adro.png'
 
 export type StocksAnalysis = {
     name: string
