@@ -1,5 +1,6 @@
 import { useState, ChangeEvent } from "react";
 import axios from "axios";
+import useAuthStore from "../../store/authStore";
 
 const RiskProfileTest = () => {
   const [formData, setFormData] = useState({
@@ -41,10 +42,15 @@ const RiskProfileTest = () => {
     return !Object.values(newErrors).includes(true);
   };
 
+  const {user} = useAuthStore();
+
   const onSubmit = async () => {
     if (validate()) {
       try {
-        const res = await axios.post(`${import.meta.env}/api/risk-profile`, formData);
+        const res = await axios.post(`${import.meta.env.VITE_API_URL}/risk-profile-test`, {
+          ...formData,
+          userId: user?.googleId,
+        });
         console.log(res.data);
       } catch (error) {
         console.error(error);
