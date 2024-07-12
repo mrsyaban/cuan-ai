@@ -1,9 +1,7 @@
-import {
-  RouterProvider,
-  createBrowserRouter,
-  Navigate,
-} from "react-router-dom";
 import { useEffect, useState } from "react";
+import { RouterProvider, createBrowserRouter, 
+  Navigate 
+} from "react-router-dom";
 import useAuthStore from "./store/authStore";
 
 // Component imports
@@ -18,6 +16,7 @@ import WatchlistPage from "./pages/registered/watchlist";
 import RiskProfileTest from "./components/risk-profile-test";
 import Layout from "./pages/layout";
 import LandingPage from "./pages/landingpage";
+import AnalyzerComponent from "./components/analysis";
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { isAuthenticated, riskProfile } = useAuthStore();
@@ -77,7 +76,7 @@ export default function App() {
           path: "/",
           element: isAuthenticated ? (
             <ProtectedRoute>
-              <AnalyzerPage />
+            <AnalyzerComponent/>
             </ProtectedRoute>
           ) : (
             <LandingPage />
