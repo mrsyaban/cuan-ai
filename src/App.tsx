@@ -68,12 +68,12 @@ export default function App() {
       ],
     },
     {
-      path:"/adro",
-      element: <AdroAnalysisSection/>
-    },
-    {
       path: "/subscribe",
       element: <SubscribePage />
+    },
+    {
+      path:"/adro",
+      element: <AdroAnalysisSection/>
     },
     {
       path: "/risk-profile-test",
