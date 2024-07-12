@@ -34,7 +34,7 @@ const LoginPage = () => {
           </div>
           <div className="flex flex-row gap-2">
             Don't have an account?{" "}
-            <a href="/signup" className="text-blue-500">
+            <a href="/free/signup" className="text-blue-500">
               Sign Up
             </a>
           </div>

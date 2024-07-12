@@ -1,11 +1,18 @@
+<<<<<<< HEAD
 import { useEffect, useState } from "react";
 import {
   Navigate,
+=======
+import {
+>>>>>>> b13bd53aaa3d9e3703d5bad24d6d1c67ef302236
   RouterProvider,
   createBrowserRouter,
   // Navigate
 } from "react-router-dom";
+<<<<<<< HEAD
 import useAuthStore from "./store/authStore";
+=======
+>>>>>>> b13bd53aaa3d9e3703d5bad24d6d1c67ef302236
 
 // Component imports
 import AnalyzerPage from "./pages/analyzer";
@@ -19,55 +26,11 @@ import WatchlistPage from "./pages/registered/watchlist";
 import RiskProfileTest from "./components/risk-profile-test";
 import Layout from "./pages/layout";
 // import LandingPage from "./pages/landingpage";
-
-function ProtectedRoute({ children }: { children: React.ReactNode }) {
-  // const { isAuthenticated, riskProfile } = useAuthStore();
-
-  // if (!isAuthenticated) {
-  //   return <Navigate to="/login" />;
-  // }
-
-  // if (isAuthenticated && !riskProfile) {
-  //   return <Navigate to="/risk-profile-test" />;
-  // }
-
-  return children;
-}
+// import AnalyzerComponent from "./components/analysis";
+import LandingPage from "./pages/landingpage";
+import SubscribePage from "./pages/subscribe";
 
 export default function App() {
-  const { isAuthenticated, setUser, user } = useAuthStore();
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const response = await fetch(import.meta.env.VITE_API_URL + "/user", {
-          credentials: "include",
-        });
-        if (!response.ok) {
-          throw new Error("Failed to fetch user");
-        }
-        const userData = await response.json();
-        if (userData) setUser(userData);
-      } catch (error) {
-        console.error("Error fetching user:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchUser();
-  }, [setUser]);
-
-  useEffect(() => {
-    console.log("isAuthenticated", isAuthenticated);
-    console.log("user", user);
-  }, [isAuthenticated, user]);
-
-  if (isLoading) {
-    return <div>Loading...</div>; // Or a loading spinner component
-  }
-
   const routes = [
     {
       path: "/",
@@ -75,6 +38,7 @@ export default function App() {
       children: [
         {
           path: "/",
+<<<<<<< HEAD
           // element: isAuthenticated ? (
           //   <ProtectedRoute>
           //   <AnalyzerComponent/>
@@ -87,44 +51,58 @@ export default function App() {
               <AnalyzerPage />
             </ProtectedRoute>
           ),
+=======
+          element: <AnalyzerPage />,
+>>>>>>> b13bd53aaa3d9e3703d5bad24d6d1c67ef302236
         },
         {
           path: "/profile",
-          element: (
-            <ProtectedRoute>
-              <ProfilePage />
-            </ProtectedRoute>
-          ),
+          element: <ProfilePage />,
         },
         {
-          path: "/portofolio",
-          element: (
-            <ProtectedRoute>
-              <PortfolioPage />
-            </ProtectedRoute>
-          ),
+          path: "/portfolio",
+          element: <PortfolioPage />,
         },
         {
           path: "/watchlist",
-          element: (
-            <ProtectedRoute>
-              <WatchlistPage />
-            </ProtectedRoute>
-          ),
+          element: <WatchlistPage />,
         },
+      ],
+    },
+    {
+      path: "/free",
+      element: <Layout isAuthenticated={false} />,
+      children: [
         {
+<<<<<<< HEAD
           path: "/signup",
           element: !isAuthenticated ? <SignUpPage /> : <Navigate to="/" />,
         },
         {
           path: "/login",
           element: !isAuthenticated ? <LoginPage /> : <Navigate to="/" />,
+=======
+          path: "/free/",
+          element: <LandingPage />,
         },
         {
-          path: "/analyzer",
+          path: "/free/analyzer",
           element: <AnalyzerPage />,
+>>>>>>> b13bd53aaa3d9e3703d5bad24d6d1c67ef302236
+        },
+        {
+          path: "/free/signup",
+          element: <SignUpPage />,
+        },
+        {
+          path: "/free/login",
+          element: <LoginPage />,
         },
       ],
+    },
+    {
+      path: "/subscribe",
+      element: <SubscribePage />
     },
     {
       path: "/risk-profile-test",
@@ -143,6 +121,7 @@ export default function App() {
       element: <NotFoundPage />,
     },
   ];
+  
 
   const router = createBrowserRouter(routes);
 

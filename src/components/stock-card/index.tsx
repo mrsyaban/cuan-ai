@@ -36,7 +36,7 @@ const StockCard = ({ stockData }: { stockData: Stock }) => {
         <div className="col-span-1 text-left text-blue-500">: HOLD</div>
       </div>
 
-      <div onClick={()=>navigate("/result")} className="w-full flex cursor-pointer hover:bg-opacity-65 justify-center border border-blue-600 bg-blue-600 bg-opacity-40 rounded-md">View Analysis</div>
+      <div onClick={()=>navigate("/adro")} className="w-full flex cursor-pointer hover:bg-opacity-65 justify-center border border-blue-600 bg-blue-600 bg-opacity-40 rounded-md">View Analysis</div>
     </div>
   );
 };
