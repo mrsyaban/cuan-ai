@@ -4,7 +4,7 @@ import UserSidebar from "../../components/user-sidebar";
 
 const Layout = ({isAuthenticated}:{isAuthenticated:boolean}) => {
   return (
-    <div className={`flex ${isAuthenticated ? "flex-row" : "flex-col"} `}>
+    <div className={`flex w-screen ${isAuthenticated ? "flex-row" : "flex-col"} `}>
       {isAuthenticated ? <UserSidebar /> : <Header />}
       <Outlet />
     </div>

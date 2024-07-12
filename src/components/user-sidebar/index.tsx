@@ -17,11 +17,11 @@ const UserSidebar = () => {
 
 
   return (
-    <div className="flex flex-col h-screen sticky gap-20 bg-primary-dark w-[580px] ">
+    <div className="flex flex-col h-screen gap-20 px-4 bg-primary-dark w-[480px] ">
       <div className="flex gap-12 items-center text-sm ">
         <img src={Logo} onClick={() => navigate("/")} className="flex cursor-pointer h-[100px] w-[100px] items-center text-white" />
       </div>
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-8">
         <Link to="/profile" className="flex px-4 text-white hover:text-white border-2 border-white m-4 p-4 gap-2 rounded-md text-xl font-semibold items-center">
           <img src={ProfileIcon} alt="profile-icon" className="w-8 h-8" />
           Profile
