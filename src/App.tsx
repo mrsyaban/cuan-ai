@@ -5,6 +5,9 @@ import LandingPage from "./pages/landing-page";
 import AnalyzerPage from "./pages/analyzer";
 import NotFoundPage from "./pages/not-found";
 import AnalysisResultPage from "./pages/result";
+import SignUpPage from "./pages/signup";
+import LoginPage from "./pages/login";
+
 
 export default function App() {
 
@@ -12,6 +15,14 @@ export default function App() {
     {
       path: "/",
       element: <LandingPage />,
+    },
+    {
+      path: "/signup",
+      element: <SignUpPage />,
+    },
+    {
+      path: "/login",
+      element: <LoginPage />,
     },
     {
       path: "/analyzer",

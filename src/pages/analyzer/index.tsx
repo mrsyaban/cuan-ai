@@ -26,6 +26,9 @@ const AnalyzerPage: React.FC = () => {
 
   return (
     <div className="h-screen w-screen flex flex-col items-center justify-center">
+      <div className="">
+
+      </div>
       <div className="flex flex-col items-center gap-2">
         <div>
           Upload financial statement here
