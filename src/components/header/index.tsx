@@ -13,7 +13,7 @@ const Header = () => {
         UNLOCK THE TRUE POTENTIAL OF INVESTMENT
       </div>
         
-      <Link to="/login" className="cursor-pointer border-2 hover:bg-opacity-40 hover:text-white border-pink-400 bg-pink-300 bg-opacity-25 w-fit self-center h-fit py-1 px-8 rounded-full text-white text-lg">
+      <Link to="/subscribe" className="cursor-pointer border-2 hover:bg-opacity-40 hover:text-white border-pink-400 bg-pink-300 bg-opacity-25 w-fit self-center h-fit py-1 px-8 rounded-full text-white text-lg">
         Subscribe
       </Link>
     </div>

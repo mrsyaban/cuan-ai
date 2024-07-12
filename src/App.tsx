@@ -20,6 +20,7 @@ import Layout from "./pages/layout";
 // import LandingPage from "./pages/landingpage";
 import AnalyzerComponent from "./components/analysis";
 import LandingPage from "./pages/landingpage";
+import SubscribePage from "./pages/subscribe";
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   // const { isAuthenticated, riskProfile } = useAuthStore();
@@ -54,10 +55,10 @@ export default function App() {
         console.error("Error fetching user:", error);
       }
     };
-
+    
     fetchUser();
   }, [setUser]);
-
+  
   console.log("isAuthenticated", isAuthenticated);
   const routes = [
     {
@@ -71,6 +72,14 @@ export default function App() {
         {
           path: "/analyzer",
           element: <AnalyzerPage />,
+        },
+        {
+          path: "/signup",
+          element: <SignUpPage />,
+        },
+        {
+          path: "/login",
+          element: <LoginPage />,
         },
       ],
     },
@@ -111,18 +120,14 @@ export default function App() {
           ),
         },
         {
-          path: "/signup",
-          element: !isAuthenticated && <SignUpPage />,
-        },
-        {
-          path: "/login",
-          element: !isAuthenticated && <LoginPage />,
-        },
-        {
           path: "/analyzer",
           element: <AnalyzerPage />,
         },
       ],
+    },
+    {
+      path: "/subscribe",
+      element: <SubscribePage/>
     },
     {
       path: "/risk-profile-test",
