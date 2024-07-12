@@ -1,5 +1,9 @@
-import { RouterProvider, createBrowserRouter, Navigate } from "react-router-dom";
-import { useEffect } from "react";
+import {
+  RouterProvider,
+  createBrowserRouter,
+  Navigate,
+} from "react-router-dom";
+import { useEffect, useState } from "react";
 import useAuthStore from "./store/authStore";
 
 // Component imports
@@ -23,6 +27,7 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
   }
 
   if (isAuthenticated && !riskProfile) {
+    console.log("Redirecting to risk profile test");
     return <Navigate to="/risk-profile-test" />;
   }
 
@@ -30,8 +35,8 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  const { isAuthenticated, setUser } = useAuthStore();
-  console.log("auth",isAuthenticated);
+  const { isAuthenticated, setUser, user } = useAuthStore();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -42,17 +47,27 @@ export default function App() {
         if (!response.ok) {
           throw new Error("Failed to fetch user");
         }
-        const user = await response.json();
-        if (user) setUser(user);
+        const userData = await response.json();
+        if (userData) setUser(userData);
       } catch (error) {
         console.error("Error fetching user:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
     fetchUser();
   }, [setUser]);
 
-  console.log("isAuthenticated", isAuthenticated)
+  useEffect(() => {
+    console.log("isAuthenticated", isAuthenticated);
+    console.log("user", user);
+  }, [isAuthenticated, user]);
+
+  if (isLoading) {
+    return <div>Loading...</div>; // Or a loading spinner component
+  }
+
   const routes = [
     {
       path: "/",
@@ -94,11 +109,11 @@ export default function App() {
         },
         {
           path: "/signup",
-          element: !isAuthenticated && <SignUpPage />,
+          element: !isAuthenticated ? <SignUpPage /> : <Navigate to="/" />,
         },
         {
           path: "/login",
-          element: !isAuthenticated && <LoginPage />,
+          element: !isAuthenticated ? <LoginPage /> : <Navigate to="/" />,
         },
         {
           path: "/analyzer",
