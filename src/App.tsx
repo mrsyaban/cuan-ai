@@ -51,24 +51,10 @@ export default function App() {
     fetchUser();
   }, [setUser]);
 
-  console.log(isAuthenticated);
-
   const routes = [
     {
       path: "/",
-      element: <LandingPage />,
-    },
-    {
-      path: "/signup",
-      element: <SignUpPage />,
-    },
-    {
-      path: "/login",
-      element: <LoginPage />,
-    },
-    {
-      path: "/user",
-      element: <Layout isAuthenticated={true} />,
+      element: <Layout isAuthenticated={isAuthenticated} />,
       children: [
         {
           path: "/",
@@ -103,6 +89,14 @@ export default function App() {
               <WatchlistPage />
             </ProtectedRoute>
           ),
+        },
+        {
+          path: "/signup",
+          element: !isAuthenticated ? <SignUpPage /> : <Navigate to="/" />,
+        },
+        {
+          path: "/login",
+          element: !isAuthenticated ? <LoginPage /> : <Navigate to="/" />,
         },
         {
           path: "/analyzer",
