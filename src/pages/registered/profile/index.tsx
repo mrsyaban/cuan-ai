@@ -1,4 +1,3 @@
-import React from 'react';
 
 const ProfilePage = () => {
   // Example user data, in a real application this would likely come from props or state
