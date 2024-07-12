@@ -5,6 +5,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 // import StocksChart from "../chart";
 import { BarChart, Card, DonutChart, LineChart } from "@tremor/react";
+import { HiOutlineBookmark, HiOutlineShoppingCart } from "react-icons/hi";
 
 
 const StocksAnalysisSection = () => {
@@ -108,7 +109,18 @@ const StocksAnalysisSection = () => {
             <img src={analysis.logo} alt="logo" className="w-6 h-6" />
             {analysis.name}
           </div>
-          <ActionChip action={analysis.action} />
+          <div className="flex items-center">
+            <span className="text-lime-500 font-bold">RECOMMENDED</span>
+            <span className="block w-3"></span>
+            <button>
+              <HiOutlineBookmark />
+            </button>
+            <span className="block w-3"></span>
+            <button>
+              <HiOutlineShoppingCart />
+            </button>
+          </div>
+          {/* <ActionChip action={analysis.action} /> */}
         </div>
         <div className="flex flex-row rounded-md justify-between bg-primary-dark h-[90%]">
           <pre className="text-wrap overflow-y-auto px-10 py-6">
@@ -130,8 +142,8 @@ const StocksAnalysisSection = () => {
         </div>
       </div>
       <div className="flex flex-col w-[30%]">
-        <div className="flex flex-row rounded-md justify-between bg-primary-dark px-12 py-4 h-fit">
-          <Card className="w-[500px]">
+        <div className="flex flex-col rounded-md justify-between bg-primary-dark px-12 py-4 h-fit">
+          <Card className="w-[460px] mb-4">
             <h3 className="ml-0 mr-1 font-semibold text-tremor-content-strong dark:text-dark-tremor-content-strong">
               Revenue (IDR Mil)
             </h3>
@@ -149,7 +161,7 @@ const StocksAnalysisSection = () => {
               className="mt-6 h-60 block"
             />
           </Card>
-          <Card className="w-[400px] h-[300px]">
+          <Card className="w-[460px] h-[300px] mb-4">
             <h3 className="ml-0 mr-1 font-semibold text-tremor-content-strong dark:text-dark-tremor-content-strong">
               Debt Equity Ratio
             </h3>
@@ -164,7 +176,7 @@ const StocksAnalysisSection = () => {
               colors={['red', 'blue']}
             />
           </Card>
-          <Card className="w-[400px] h-[300px]">
+          <Card className="w-[460px] h-[300px]">
             <h3 className="ml-0 mr-1 font-semibold text-tremor-content-strong dark:text-dark-tremor-content-strong">
               Price Raycast
             </h3>
