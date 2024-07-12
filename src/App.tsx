@@ -51,6 +51,7 @@ export default function App() {
     fetchUser();
   }, [setUser]);
 
+  console.log("isAuthenticated", isAuthenticated)
   const routes = [
     {
       path: "/",
