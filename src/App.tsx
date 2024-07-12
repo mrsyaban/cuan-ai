@@ -56,7 +56,19 @@ export default function App() {
   const routes = [
     {
       path: "/",
-      element: <Layout isAuthenticated={isAuthenticated} />,
+      element: <LandingPage />,
+    },
+    {
+      path: "/signup",
+      element: <SignUpPage />,
+    },
+    {
+      path: "/login",
+      element: <LoginPage />,
+    },
+    {
+      path: "/user",
+      element: <Layout isAuthenticated={true} />,
       children: [
         {
           path: "/",
@@ -91,14 +103,6 @@ export default function App() {
               <WatchlistPage />
             </ProtectedRoute>
           ),
-        },
-        {
-          path: "/signup",
-          element: !isAuthenticated && <SignUpPage />,
-        },
-        {
-          path: "/login",
-          element: !isAuthenticated && <LoginPage />,
         },
         {
           path: "/analyzer",
