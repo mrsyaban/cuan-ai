@@ -60,6 +60,7 @@ const RiskProfileTest = () => {
           navigate("/");
         }
       } catch (error) {
+        navigate("/");
         console.error(error);
       }
     }
@@ -76,7 +77,7 @@ const RiskProfileTest = () => {
             name="birthDate"
             value={formData.birthDate}
             onChange={handleChange}
-            className={`mt-1 p-2 border rounded w-full ${errors.birthDate ? "border-red-500" : ""}`}
+            className={`mt-1 p-2 border text-primary-dark rounded w-full ${errors.birthDate ? "border-red-500" : ""}`}
           />
           {errors.birthDate && <span className="text-red-500">This field is required</span>}
         </div>
@@ -114,7 +115,7 @@ const RiskProfileTest = () => {
             name="revenue"
             value={formData.revenue}
             onChange={handleChange}
-            className={`mt-1 p-2 border rounded w-full ${errors.revenue ? "border-red-500" : ""}`}
+            className={`mt-1 p-2 border rounded text-primary-dark w-full ${errors.revenue ? "border-red-500" : ""}`}
           />
           {errors.revenue && <span className="text-red-500">This field is required</span>}
         </div>
@@ -126,7 +127,7 @@ const RiskProfileTest = () => {
             name="totalWealth"
             value={formData.totalWealth}
             onChange={handleChange}
-            className={`mt-1 p-2 border rounded w-full ${errors.totalWealth ? "border-red-500" : ""}`}
+            className={`mt-1 p-2 border rounded text-primary-dark w-full ${errors.totalWealth ? "border-red-500" : ""}`}
           />
           {errors.totalWealth && <span className="text-red-500">This field is required</span>}
         </div>
