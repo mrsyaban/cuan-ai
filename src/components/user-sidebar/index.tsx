@@ -61,7 +61,7 @@ const UserSidebar = () => {
           Watchlist
         </NavLink>
         <NavLink
-          to="/portofolio"
+          to="/portfolio"
           className={({ isActive }) =>
             `flex px-4 gap-2 text-white py-2 rounded-md hover:text-white ${
               isActive ? "bg-blue-600" : ""
